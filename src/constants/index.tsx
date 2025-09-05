@@ -38,7 +38,7 @@ export const ticketStatusPill = (
 	return (
 		<span
 			className={twMerge(
-				"text-xs border border-gay-400 font-semibold rounded-full px-2 py-1",
+				"text-xs border border-gay-400 font-semibold rounded-full px-2 py-1 grid-cols-3",
 				dense && "py-0 rounded",
 				status === 1 && "text-gray-500 border-gray-500",
 				status === 2 && "text-blue-500 border-blue-500",
