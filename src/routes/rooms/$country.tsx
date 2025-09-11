@@ -1,15 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { DefaultLayout } from "../components/layout/DefaultLayout";
-import { Home } from "../pages/Home";
+import { DefaultLayout } from "../../components/layout/DefaultLayout";
+import { Rooms } from "../../pages/Rooms";
 
 const RouteComponent: React.FC = () => {
 	return (
 		<DefaultLayout>
-			<Home />
+			<Rooms />
 		</DefaultLayout>
 	);
 };
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/rooms/$country")({
 	component: RouteComponent,
 });

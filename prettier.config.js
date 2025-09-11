@@ -17,6 +17,7 @@ const prettierConfig = {
 	endOfLine: "lf",
 	embeddedLanguageFormatting: "auto",
 	singleAttributePerLine: false,
+	plugins: ["prettier-plugin-tailwindcss"],
 };
 
 export default prettierConfig;

@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-body {
-  /* border: 1px solid red; */
-  @apply text-gray-700
+@theme {
+  --color-primary: #D86D38;
+  --color-muted: #99a1af
 }
 
-.muted {
-  @apply text-gray-400
+body {
+  @apply text-gray-700
 }

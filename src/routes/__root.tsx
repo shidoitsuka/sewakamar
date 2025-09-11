@@ -1,15 +1,34 @@
 import type * as React from "react";
-import { Outlet, createRootRoute } from "@tanstack/react-router";
-import { TicketDataProvider } from "../hooks/useTickets";
+import { HeadContent, Outlet, createRootRoute } from "@tanstack/react-router";
 
-function RootComponent(): React.FC {
+const RootComponent: React.FC = () => {
 	return (
-		<TicketDataProvider>
+		<>
+			<HeadContent />
 			<Outlet />
-		</TicketDataProvider>
+		</>
 	);
-}
+};
 
 export const Route = createRootRoute({
 	component: RootComponent,
+	head: () => ({
+		meta: [
+			{
+				title: "Room Rent - cheap way to stay overnight",
+			},
+			{
+				name: "description",
+				content: "Get your cheap room now!",
+			},
+			{
+				property: "og:title",
+				content: "Room Rent - cheap way to stay overnight",
+			},
+			{
+				property: "og:description",
+				content: "Room Rent - cheap way to stay overnight",
+			},
+		],
+	}),
 });
