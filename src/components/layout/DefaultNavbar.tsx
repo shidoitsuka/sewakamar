@@ -7,11 +7,9 @@ export const DefaultNavbar: React.FC<PropsWithChildren> = () => {
 			<div className="container mx-auto flex items-center justify-between px-4 py-4">
 				<div className="flex items-center space-x-2">
 					<div className="bg-primary flex h-10 w-10 items-center justify-center rounded-lg">
-						<span className="text-primary-foreground text-lg font-bold">
-							RR
-						</span>
+						<span className="text-lg font-bold text-white">RR</span>
 					</div>
-					<span className="text-xl font-bold">Room Rent</span>
+					<span className="text-primary text-xl font-bold">Room Rent</span>
 				</div>
 				<nav className="hidden space-x-6 font-semibold md:flex">
 					<a
@@ -34,8 +32,8 @@ export const DefaultNavbar: React.FC<PropsWithChildren> = () => {
 					</a>
 				</nav>
 				<div className="flex items-center space-x-2">
-					<Button>Register</Button>
 					<Button variant="outline">Login</Button>
+					<Button>Register</Button>
 				</div>
 			</div>
 		</header>

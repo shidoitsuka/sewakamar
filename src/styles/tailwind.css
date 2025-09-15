@@ -2,7 +2,8 @@
 
 @theme {
   --color-primary: #D86D38;
-  --color-muted: #99a1af
+  --color-muted: #99a1af;
+  --color-dark: #4a5565;
 }
 
 body {

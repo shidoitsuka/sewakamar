@@ -1,8 +1,9 @@
+import { RoomCard } from "../../components/cards/RoomCard";
+import type { Room } from "../../types/room";
 import { RoomFilter } from "./components/Filter";
 
 export const Rooms: React.FC = () => {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const mockData = [
+	const mockData: Array<Room> = [
 		{
 			id: "jp-1",
 			title: "Traditional Ryokan in Kyoto",
@@ -11,7 +12,7 @@ export const Rooms: React.FC = () => {
 			rating: 4.9,
 			reviews: 127,
 			image: "/placeholder.svg?height=300&width=400&text=Kyoto+Ryokan",
-			amenities: ["Wifi", "Traditional Bath", "Garden View", "Tea Ceremony"],
+			amenities: ["Wi-Fi", "Bathtub", "Air Conditioner", "Disability Friendly"],
 			guests: 2,
 			owner: {
 				id: "owner-1",
@@ -27,7 +28,7 @@ export const Rooms: React.FC = () => {
 			rating: 4.7,
 			reviews: 89,
 			image: "/placeholder.svg?height=300&width=400&text=Tokyo+Apartment",
-			amenities: ["Wifi", "Kitchen", "City View", "Metro Access"],
+			amenities: ["Wi-Fi", "Bathtub"],
 			guests: 4,
 			owner: {
 				id: "owner-2",
@@ -43,12 +44,7 @@ export const Rooms: React.FC = () => {
 			rating: 4.8,
 			reviews: 156,
 			image: "/placeholder.svg?height=300&width=400&text=Zen+Garden",
-			amenities: [
-				"Wifi",
-				"Private Garden",
-				"Meditation Space",
-				"Bamboo Forest",
-			],
+			amenities: ["Air Conditioner"],
 			guests: 3,
 			owner: {
 				id: "owner-3",
@@ -80,7 +76,16 @@ export const Rooms: React.FC = () => {
 						</div>
 					</div>
 				</section>
-				<RoomFilter />
+				<div>
+					<RoomFilter />
+					<section className="container mx-auto py-6">
+						<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+							{mockData.map((room) => (
+								<RoomCard room={room} to="/" />
+							))}
+						</div>
+					</section>
+				</div>
 			</div>
 		</>
 	);

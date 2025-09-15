@@ -13,7 +13,7 @@ export const RoomFilter: React.FC = () => {
 	};
 
 	return (
-		<section className="container mx-auto mt-6">
+		<section className="container mx-auto pt-6">
 			<div className="border-primary rounded-lg border p-6">
 				<div className="flex items-center space-x-3">
 					<div className="bg-primary/30 text-primary rounded p-3">
@@ -24,9 +24,9 @@ export const RoomFilter: React.FC = () => {
 						<p className="text-muted">4 rooms available</p>
 					</div>
 				</div>
-				<div className="mt-4 grid grid-cols-4 gap-4">
+				<div className="mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
 					<div>
-						<h6 className="font-semibold">Guests</h6>
+						<h6 className="mb-2 font-semibold">Guests</h6>
 						<Select
 							allowDeselect={false}
 							defaultValue="1 Person"
@@ -40,7 +40,7 @@ export const RoomFilter: React.FC = () => {
 						/>
 					</div>
 					<div>
-						<h6 className="font-semibold">Sort by</h6>
+						<h6 className="mb-2 font-semibold">Sort by</h6>
 						<Chip.Group value={selectedFilter} onChange={handleSortChange}>
 							<Group gap="sm">
 								<Chip value="1">Rating</Chip>
@@ -49,7 +49,7 @@ export const RoomFilter: React.FC = () => {
 						</Chip.Group>
 					</div>
 					<div>
-						<h6 className="font-semibold">Price Range</h6>
+						<h6 className="mb-2 font-semibold">Price Range</h6>
 						<div className="flex">
 							<NumberInput
 								hideControls
@@ -75,7 +75,7 @@ export const RoomFilter: React.FC = () => {
 						</div>
 					</div>
 					<div>
-						<h6 className="font-semibold">Amenities</h6>
+						<h6 className="mb-2 font-semibold">Amenities</h6>
 						<AmenitiesFilter />
 					</div>
 				</div>

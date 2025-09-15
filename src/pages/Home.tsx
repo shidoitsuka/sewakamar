@@ -3,6 +3,7 @@ import type { FunctionComponent } from "../common/types";
 import { Button, TextInput } from "@mantine/core";
 import { LuStar, LuMapPin, LuUsers } from "react-icons/lu";
 import { CountryCard } from "../components/cards/CountryCard";
+import type { Country } from "../types/country";
 
 export const Home = (): FunctionComponent => {
 	const { t, i18n } = useTranslation();
@@ -15,7 +16,7 @@ export const Home = (): FunctionComponent => {
 		}
 	};
 
-	const countries = [
+	const countries: Array<Country> = [
 		{
 			id: "japan",
 			name: "Japan",
@@ -68,7 +69,7 @@ export const Home = (): FunctionComponent => {
 						<div
 							className="absolute inset-0 bg-cover bg-center bg-no-repeat"
 							style={{
-								backgroundImage: `url('/placeholder-ys0oh.png')`,
+								backgroundImage: "url('https://picsum.photos/1300/600')",
 							}}
 						>
 							<div className="absolute inset-0 bg-black/40"></div>
@@ -118,19 +119,19 @@ export const Home = (): FunctionComponent => {
 					</section>
 				</div>
 
-				<section className="bg-muted/30 px-4 py-20 sm:px-6 lg:px-8">
+				<section className="px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-7xl">
 						<div className="mb-16 text-center">
-							<h2 className="text-foreground mb-4 text-4xl font-bold md:text-5xl">
+							<h2 className="text-primary mb-4 text-4xl font-bold md:text-5xl">
 								Explore Destinations
 							</h2>
-							<p className="text-muted-foreground mx-auto max-w-2xl text-xl text-balance">
+							<p className="text-primary/50 mx-auto max-w-2xl text-xl text-balance">
 								Choose from our carefully selected countries and discover unique
 								accommodations
 							</p>
 						</div>
 
-						<div className="grid translate-y-0 grid-cols-1 gap-8 opacity-100 transition-all duration-1000 md:grid-cols-2 lg:grid-cols-3">
+						<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 							{countries.map((country, index) => (
 								<CountryCard key={index} country={country} to="/" />
 							))}

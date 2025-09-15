@@ -1,20 +1,16 @@
 import { type LinkProps, Link } from "@tanstack/react-router";
 import { LuArrowRight } from "react-icons/lu";
+import type { Country } from "../../types/country";
 
 interface Props {
 	to: LinkProps["to"];
-	country: {
-		name: string;
-		image: string;
-		roomCount: number;
-		description: string;
-	};
+	country: Country;
 }
 
 export const CountryCard: React.FC<Props> = ({ to, country }) => {
 	return (
 		<Link to={to}>
-			<div className="group hover:border-primary cursor-pointer overflow-hidden rounded-lg border-2 border-transparent bg-white transition-all duration-300 hover:scale-105 hover:shadow-xl">
+			<div className="group hover:border-primary cursor-pointer overflow-hidden rounded-lg border-2 border-transparent bg-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
 				<div className="relative h-64 overflow-hidden">
 					<img
 						alt={country.name}
