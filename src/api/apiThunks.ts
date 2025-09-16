@@ -1,0 +1,62 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import xior from "xior";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface Config<_TResponse = any, TPayload = any, TParameters = any> {
+	url: string;
+	baseUrl?: string;
+	method: "GET" | "POST" | "PUT" | "DELETE";
+	params?: TParameters;
+	payload?: TPayload;
+}
+
+interface ApiSuccess<T> {
+	success: true;
+	data: T;
+	status: number;
+}
+
+interface ApiError {
+	success: false;
+	error: any;
+	status: number;
+}
+
+type ApiResponse<T> = ApiSuccess<T> | ApiError;
+
+export const apiThunks = async <
+	TResponse = any,
+	TPayload = any,
+	TParameters extends Record<string, any> | undefined = any,
+>(
+	config: Config<TResponse, TPayload, TParameters>
+): Promise<ApiResponse<TResponse>> => {
+	const { baseUrl, method, params, payload, url } = config;
+
+	try {
+		const response = (await xior.request({
+			url: url,
+			method,
+			baseURL: baseUrl || import.meta.env["BASE_URL"],
+			params: method === "GET" || method === "DELETE" ? params : undefined,
+			data: method === "POST" || method === "PUT" ? payload : undefined,
+		})) as { data: TResponse; status: number };
+
+		return {
+			success: true,
+			data: response.data,
+			status: response.status,
+		};
+	} catch (error: unknown) {
+		const axiosError = error as {
+			response?: { data?: unknown; status?: number };
+			message?: string;
+		};
+
+		return {
+			success: false,
+			error: axiosError.response?.data ?? axiosError.message ?? "Unknown error",
+			status: axiosError.response?.status ?? 500,
+		};
+	}
+};
