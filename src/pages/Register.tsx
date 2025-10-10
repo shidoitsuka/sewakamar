@@ -2,7 +2,7 @@ import { Button, TextInput } from "@mantine/core";
 import { FcGoogle } from "react-icons/fc";
 import type React from "react";
 
-export const Login: React.FC = () => {
+export const Register: React.FC = () => {
 	return (
 		<div className="container mx-auto h-screen max-w-4xl py-14">
 			<div className="flex h-full w-full items-center justify-center rounded-lg shadow-2xl">
@@ -17,10 +17,11 @@ export const Login: React.FC = () => {
 							<h6 className="font-bold">Your one stop stay.</h6>
 						</div>
 						{/* !top */}
-						<div className="w-full space-y-2">
+						<div className="grid w-full grid-cols-2 gap-2">
 							<TextInput
-								label="Username or Email"
-								placeholder="Username"
+								className="col-span-2"
+								label="Full Name"
+								placeholder="Name"
 								w="100%"
 							/>
 							<TextInput
@@ -29,17 +30,29 @@ export const Login: React.FC = () => {
 								type="password"
 								w="100%"
 							/>
-							<span className="text-muted text-sm">
-								Forgot your password?{" "}
-								<span className="text-primary font-semibold underline">
-									Click here
-								</span>
-							</span>
+							<TextInput
+								label="Repeat Password"
+								placeholder="Password"
+								type="password"
+								w="100%"
+							/>
+							<TextInput
+								label="Email"
+								placeholder="mail@domain.com"
+								type="email"
+								w="100%"
+							/>
+							<TextInput
+								label="Phone Number"
+								placeholder="Phone"
+								type="number"
+								w="100%"
+							/>
 						</div>
-						<Button fullWidth>Login</Button>
-						<span className="text-sm">Don't have account yet?</span>
+						<Button fullWidth>Register</Button>
+						<span className="text-sm">Already registered?</span>
 						<Button fullWidth variant="outline">
-							Register
+							Login
 						</Button>
 						<span className="text-muted text-sm">or continue with</span>
 						<div>

@@ -86,6 +86,7 @@ const typescriptConfig = {
 				},
 			},
 		],
+		"import/no-duplicates": ["error", { "prefer-inline": true }],
 	},
 	settings: {
 		"import/resolver": {

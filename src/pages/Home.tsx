@@ -1,20 +1,20 @@
-import { useTranslation } from "react-i18next";
 import type { FunctionComponent } from "../common/types";
 import { Button, TextInput } from "@mantine/core";
 import { LuStar, LuMapPin, LuUsers } from "react-icons/lu";
 import { CountryCard } from "../components/cards/CountryCard";
 import type { Country } from "../types/country";
+import { useGetPropertyQuery } from "../api/hooks/property";
 
 export const Home = (): FunctionComponent => {
-	const { t, i18n } = useTranslation();
+	// const { t, i18n } = useTranslation();
 
-	const onTranslateButtonClick = async (): Promise<void> => {
-		if (i18n.resolvedLanguage === "en") {
-			await i18n.changeLanguage("es");
-		} else {
-			await i18n.changeLanguage("en");
-		}
-	};
+	// const onTranslateButtonClick = async (): Promise<void> => {
+	// 	if (i18n.resolvedLanguage === "en") {
+	// 		await i18n.changeLanguage("es");
+	// 	} else {
+	// 		await i18n.changeLanguage("en");
+	// 	}
+	// };
 
 	const countries: Array<Country> = [
 		{
@@ -60,6 +60,10 @@ export const Home = (): FunctionComponent => {
 			roomCount: 634,
 		},
 	];
+
+	const { data } = useGetPropertyQuery();
+
+	console.log(data?.data);
 
 	return (
 		<>

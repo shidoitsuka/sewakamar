@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Login } from "../pages/Login";
+import { Register } from "../pages/Register";
 
 const RouteComponent: React.FC = () => {
-	return <Login />;
+	return <Register />;
 };
 
-export const Route = createFileRoute("/login")({
+export const Route = createFileRoute("/register")({
 	component: RouteComponent,
 });

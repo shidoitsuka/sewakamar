@@ -16,7 +16,7 @@ interface ApiSuccess<T> {
 	status: number;
 }
 
-interface ApiError {
+export interface ApiError {
 	success: false;
 	error: any;
 	status: number;
@@ -37,7 +37,7 @@ export const apiThunks = async <
 		const response = (await xior.request({
 			url: url,
 			method,
-			baseURL: baseUrl || import.meta.env["BASE_URL"],
+			baseURL: baseUrl || import.meta.env["VITE_APP_BASEURL"],
 			params: method === "GET" || method === "DELETE" ? params : undefined,
 			data: method === "POST" || method === "PUT" ? payload : undefined,
 		})) as { data: TResponse; status: number };
