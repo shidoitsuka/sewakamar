@@ -1,11 +1,20 @@
 import type * as React from "react";
 import { HeadContent, Outlet, createRootRoute } from "@tanstack/react-router";
+import { Toaster } from "sonner";
 
 const RootComponent: React.FC = () => {
 	return (
 		<>
 			<HeadContent />
 			<Outlet />
+			<Toaster
+				position="top-right"
+				toastOptions={{
+					classNames: {
+						icon: "!text-primary",
+					},
+				}}
+			/>
 		</>
 	);
 };

@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { DefaultNavbar } from "./DefaultNavbar";
+import { DefaultNavbar } from "./Navbar/DefaultNavbar";
 import { DefaultFooter } from "./DefaultFooter";
 
 export const DefaultLayout: React.FC<PropsWithChildren> = ({ children }) => {

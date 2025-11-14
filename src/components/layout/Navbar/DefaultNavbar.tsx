@@ -1,7 +1,13 @@
 import { Button } from "@mantine/core";
+import { useNavigate } from "@tanstack/react-router";
 import type { PropsWithChildren } from "react";
+import { MenuProfile } from "./components/MenuProfile";
+import { useAuthStore } from "../../../store/authStore";
 
 export const DefaultNavbar: React.FC<PropsWithChildren> = () => {
+	const navigate = useNavigate();
+	const { isAuthenticated } = useAuthStore();
+
 	return (
 		<header className="border-b-primary fixed top-0 z-50 w-full border-b bg-white">
 			<div className="container mx-auto flex items-center justify-between px-4 py-4">
@@ -31,10 +37,21 @@ export const DefaultNavbar: React.FC<PropsWithChildren> = () => {
 						Contact
 					</a>
 				</nav>
-				<div className="flex items-center space-x-2">
-					<Button variant="outline">Login</Button>
-					<Button>Register</Button>
-				</div>
+				{isAuthenticated() ? (
+					<MenuProfile />
+				) : (
+					<div className="flex items-center space-x-2">
+						<Button
+							variant="outline"
+							onClick={() => navigate({ to: "/login" })}
+						>
+							Login
+						</Button>
+						<Button onClick={() => navigate({ to: "/register" })}>
+							Register
+						</Button>
+					</div>
+				)}
 			</div>
 		</header>
 	);

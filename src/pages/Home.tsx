@@ -3,7 +3,7 @@ import { Button, TextInput } from "@mantine/core";
 import { LuStar, LuMapPin, LuUsers } from "react-icons/lu";
 import { CountryCard } from "../components/cards/CountryCard";
 import type { Country } from "../types/country";
-import { useGetPropertyQuery } from "../api/hooks/property";
+import { useGetCountryQuery } from "../api/hooks/country";
 
 export const Home = (): FunctionComponent => {
 	// const { t, i18n } = useTranslation();
@@ -61,7 +61,7 @@ export const Home = (): FunctionComponent => {
 		},
 	];
 
-	const { data } = useGetPropertyQuery();
+	const { data } = useGetCountryQuery();
 
 	console.log(data?.data);
 
@@ -99,7 +99,7 @@ export const Home = (): FunctionComponent => {
 								<Button size="lg">Search Rooms</Button>
 							</div>
 
-							<div className="flex items-center justify-center space-x-8 text-sm opacity-80">
+							<div className="flex items-center justify-center space-x-2 text-sm opacity-80 md:space-x-8">
 								<div className="flex items-center space-x-2">
 									<LuStar className="h-4 w-4 fill-current" />
 									<span>4.8+ Rating</span>
@@ -126,10 +126,10 @@ export const Home = (): FunctionComponent => {
 				<section className="px-4 py-20 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-7xl">
 						<div className="mb-16 text-center">
-							<h2 className="text-primary mb-4 text-4xl font-bold md:text-5xl">
+							<h2 className="mb-4 text-4xl font-bold md:text-5xl">
 								Explore Destinations
 							</h2>
-							<p className="text-primary/50 mx-auto max-w-2xl text-xl text-balance">
+							<p className="mx-auto max-w-2xl text-xl text-balance">
 								Choose from our carefully selected countries and discover unique
 								accommodations
 							</p>

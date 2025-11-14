@@ -12,8 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as RoomsCountryRouteImport } from './routes/rooms/$country'
 import { Route as RoomIdRouteImport } from './routes/room/$id'
+import { Route as DashboardPropertyIdIndexRouteImport } from './routes/dashboard/property/$id/index'
+import { Route as DashboardPropertyIdEditRouteImport } from './routes/dashboard/property/$id/edit'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -30,6 +33,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoomsCountryRoute = RoomsCountryRouteImport.update({
   id: '/rooms/$country',
   path: '/rooms/$country',
@@ -40,6 +48,17 @@ const RoomIdRoute = RoomIdRouteImport.update({
   path: '/room/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardPropertyIdIndexRoute =
+  DashboardPropertyIdIndexRouteImport.update({
+    id: '/dashboard/property/$id/',
+    path: '/dashboard/property/$id/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DashboardPropertyIdEditRoute = DashboardPropertyIdEditRouteImport.update({
+  id: '/dashboard/property/$id/edit',
+  path: '/dashboard/property/$id/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +66,9 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/room/$id': typeof RoomIdRoute
   '/rooms/$country': typeof RoomsCountryRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/property/$id/edit': typeof DashboardPropertyIdEditRoute
+  '/dashboard/property/$id': typeof DashboardPropertyIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +76,9 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/room/$id': typeof RoomIdRoute
   '/rooms/$country': typeof RoomsCountryRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/property/$id/edit': typeof DashboardPropertyIdEditRoute
+  '/dashboard/property/$id': typeof DashboardPropertyIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,12 +87,31 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/room/$id': typeof RoomIdRoute
   '/rooms/$country': typeof RoomsCountryRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/property/$id/edit': typeof DashboardPropertyIdEditRoute
+  '/dashboard/property/$id/': typeof DashboardPropertyIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/register' | '/room/$id' | '/rooms/$country'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/room/$id'
+    | '/rooms/$country'
+    | '/dashboard'
+    | '/dashboard/property/$id/edit'
+    | '/dashboard/property/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/register' | '/room/$id' | '/rooms/$country'
+  to:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/room/$id'
+    | '/rooms/$country'
+    | '/dashboard'
+    | '/dashboard/property/$id/edit'
+    | '/dashboard/property/$id'
   id:
     | '__root__'
     | '/'
@@ -75,6 +119,9 @@ export interface FileRouteTypes {
     | '/register'
     | '/room/$id'
     | '/rooms/$country'
+    | '/dashboard/'
+    | '/dashboard/property/$id/edit'
+    | '/dashboard/property/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -83,6 +130,9 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   RoomIdRoute: typeof RoomIdRoute
   RoomsCountryRoute: typeof RoomsCountryRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardPropertyIdEditRoute: typeof DashboardPropertyIdEditRoute
+  DashboardPropertyIdIndexRoute: typeof DashboardPropertyIdIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -108,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rooms/$country': {
       id: '/rooms/$country'
       path: '/rooms/$country'
@@ -122,6 +179,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoomIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/property/$id/': {
+      id: '/dashboard/property/$id/'
+      path: '/dashboard/property/$id'
+      fullPath: '/dashboard/property/$id'
+      preLoaderRoute: typeof DashboardPropertyIdIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/property/$id/edit': {
+      id: '/dashboard/property/$id/edit'
+      path: '/dashboard/property/$id/edit'
+      fullPath: '/dashboard/property/$id/edit'
+      preLoaderRoute: typeof DashboardPropertyIdEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -131,6 +202,9 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   RoomIdRoute: RoomIdRoute,
   RoomsCountryRoute: RoomsCountryRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  DashboardPropertyIdEditRoute: DashboardPropertyIdEditRoute,
+  DashboardPropertyIdIndexRoute: DashboardPropertyIdIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

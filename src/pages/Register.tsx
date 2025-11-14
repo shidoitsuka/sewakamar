@@ -1,8 +1,18 @@
 import { Button, TextInput } from "@mantine/core";
 import { FcGoogle } from "react-icons/fc";
 import type React from "react";
+import { PhoneInput } from "../components/forms/PhoneInput";
+import { Form } from "../components/forms/Form";
+import { useNavigate } from "@tanstack/react-router";
+
+interface RegisterForm {
+	fullName: string;
+	password: string;
+}
 
 export const Register: React.FC = () => {
+	const navigate = useNavigate();
+
 	return (
 		<div className="container mx-auto h-screen max-w-4xl py-14">
 			<div className="flex h-full w-full items-center justify-center rounded-lg shadow-2xl">
@@ -17,41 +27,57 @@ export const Register: React.FC = () => {
 							<h6 className="font-bold">Your one stop stay.</h6>
 						</div>
 						{/* !top */}
-						<div className="grid w-full grid-cols-2 gap-2">
-							<TextInput
-								className="col-span-2"
-								label="Full Name"
-								placeholder="Name"
-								w="100%"
-							/>
-							<TextInput
-								label="Password"
-								placeholder="Password"
-								type="password"
-								w="100%"
-							/>
-							<TextInput
-								label="Repeat Password"
-								placeholder="Password"
-								type="password"
-								w="100%"
-							/>
-							<TextInput
-								label="Email"
-								placeholder="mail@domain.com"
-								type="email"
-								w="100%"
-							/>
-							<TextInput
-								label="Phone Number"
-								placeholder="Phone"
-								type="number"
-								w="100%"
-							/>
-						</div>
-						<Button fullWidth>Register</Button>
+						<Form<RegisterForm>
+							className="w-full"
+							defaultValues={{}}
+							onSubmit={console.log}
+						>
+							{() => (
+								<>
+									<div className="grid w-full grid-cols-2 gap-2">
+										<TextInput
+											className="col-span-2"
+											label="Full Name"
+											placeholder="Name"
+											w="100%"
+										/>
+										<TextInput
+											label="Password"
+											placeholder="Password"
+											type="password"
+											w="100%"
+										/>
+										<TextInput
+											label="Repeat Password"
+											placeholder="Password"
+											type="password"
+											w="100%"
+										/>
+										<TextInput
+											label="Email"
+											placeholder="mail@domain.com"
+											w="100%"
+										/>
+										<PhoneInput
+											label="Phone Number"
+											name="phone"
+											placeholder="Phone"
+											type="number"
+											w="100%"
+										/>
+									</div>
+									<Button fullWidth className="mt-4" type="submit">
+										Register
+									</Button>
+								</>
+							)}
+						</Form>
 						<span className="text-sm">Already registered?</span>
-						<Button fullWidth variant="outline">
+						<Button
+							fullWidth
+							variant="outline"
+							onClick={() => navigate({ to: "/login" })}
+						>
 							Login
 						</Button>
 						<span className="text-muted text-sm">or continue with</span>

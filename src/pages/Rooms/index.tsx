@@ -81,7 +81,7 @@ export const Rooms: React.FC = () => {
 					<section className="container mx-auto py-6">
 						<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 							{mockData.map((room) => (
-								<RoomCard room={room} to="/" />
+								<RoomCard key={room.id} room={room} to="/" />
 							))}
 						</div>
 					</section>
