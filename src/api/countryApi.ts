@@ -1,16 +1,10 @@
 import { ApiRequestError } from "../common/utils";
 import type { ApiResponse } from "../types/api";
+import type { Country } from "../types/country";
 import { apiThunks } from "./apiThunks";
 
-export interface CountryResponse {
-	id: number;
-	name: string;
-	path: string | null;
-	description: string | null;
-}
-
-export const getCountry = async (): Promise<ApiResponse<CountryResponse>> => {
-	const response = await apiThunks<ApiResponse<CountryResponse>>({
+export const getCountry = async (): Promise<ApiResponse<Array<Country>>> => {
+	const response = await apiThunks<ApiResponse<Array<Country>>>({
 		method: "GET",
 		url: "/api/v1/public/countries",
 	});

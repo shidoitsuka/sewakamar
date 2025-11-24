@@ -1,10 +1,11 @@
 import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 import type { ApiRequestError } from "../../common/utils";
 import type { ApiResponse } from "../../types/api";
-import { type CountryResponse, getCountry } from "../country";
+import { getCountry } from "../countryApi";
+import type { Country } from "../../types/country";
 
 export const useGetCountryQuery = (): UseQueryResult<
-	ApiResponse<CountryResponse>,
+	ApiResponse<Array<Country>>,
 	ApiRequestError
 > => {
 	return useQuery({

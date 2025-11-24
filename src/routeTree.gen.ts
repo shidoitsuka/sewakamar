@@ -13,7 +13,7 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
-import { Route as RoomsCountryRouteImport } from './routes/rooms/$country'
+import { Route as RoomsCountryIdRouteImport } from './routes/rooms/$countryId'
 import { Route as RoomIdRouteImport } from './routes/room/$id'
 import { Route as DashboardPropertyIdIndexRouteImport } from './routes/dashboard/property/$id/index'
 import { Route as DashboardPropertyIdEditRouteImport } from './routes/dashboard/property/$id/edit'
@@ -38,9 +38,9 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/dashboard/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RoomsCountryRoute = RoomsCountryRouteImport.update({
-  id: '/rooms/$country',
-  path: '/rooms/$country',
+const RoomsCountryIdRoute = RoomsCountryIdRouteImport.update({
+  id: '/rooms/$countryId',
+  path: '/rooms/$countryId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RoomIdRoute = RoomIdRouteImport.update({
@@ -65,7 +65,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/room/$id': typeof RoomIdRoute
-  '/rooms/$country': typeof RoomsCountryRoute
+  '/rooms/$countryId': typeof RoomsCountryIdRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/property/$id/edit': typeof DashboardPropertyIdEditRoute
   '/dashboard/property/$id': typeof DashboardPropertyIdIndexRoute
@@ -75,7 +75,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/room/$id': typeof RoomIdRoute
-  '/rooms/$country': typeof RoomsCountryRoute
+  '/rooms/$countryId': typeof RoomsCountryIdRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/property/$id/edit': typeof DashboardPropertyIdEditRoute
   '/dashboard/property/$id': typeof DashboardPropertyIdIndexRoute
@@ -86,7 +86,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/room/$id': typeof RoomIdRoute
-  '/rooms/$country': typeof RoomsCountryRoute
+  '/rooms/$countryId': typeof RoomsCountryIdRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/property/$id/edit': typeof DashboardPropertyIdEditRoute
   '/dashboard/property/$id/': typeof DashboardPropertyIdIndexRoute
@@ -98,7 +98,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/room/$id'
-    | '/rooms/$country'
+    | '/rooms/$countryId'
     | '/dashboard'
     | '/dashboard/property/$id/edit'
     | '/dashboard/property/$id'
@@ -108,7 +108,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/room/$id'
-    | '/rooms/$country'
+    | '/rooms/$countryId'
     | '/dashboard'
     | '/dashboard/property/$id/edit'
     | '/dashboard/property/$id'
@@ -118,7 +118,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/room/$id'
-    | '/rooms/$country'
+    | '/rooms/$countryId'
     | '/dashboard/'
     | '/dashboard/property/$id/edit'
     | '/dashboard/property/$id/'
@@ -129,7 +129,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   RoomIdRoute: typeof RoomIdRoute
-  RoomsCountryRoute: typeof RoomsCountryRoute
+  RoomsCountryIdRoute: typeof RoomsCountryIdRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   DashboardPropertyIdEditRoute: typeof DashboardPropertyIdEditRoute
   DashboardPropertyIdIndexRoute: typeof DashboardPropertyIdIndexRoute
@@ -165,11 +165,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/rooms/$country': {
-      id: '/rooms/$country'
-      path: '/rooms/$country'
-      fullPath: '/rooms/$country'
-      preLoaderRoute: typeof RoomsCountryRouteImport
+    '/rooms/$countryId': {
+      id: '/rooms/$countryId'
+      path: '/rooms/$countryId'
+      fullPath: '/rooms/$countryId'
+      preLoaderRoute: typeof RoomsCountryIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/room/$id': {
@@ -201,7 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   RoomIdRoute: RoomIdRoute,
-  RoomsCountryRoute: RoomsCountryRoute,
+  RoomsCountryIdRoute: RoomsCountryIdRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   DashboardPropertyIdEditRoute: DashboardPropertyIdEditRoute,
   DashboardPropertyIdIndexRoute: DashboardPropertyIdIndexRoute,

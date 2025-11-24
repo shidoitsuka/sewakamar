@@ -7,9 +7,9 @@ const RouteComponent: React.FC = () => {
 		<DefaultLayout>
 			<Rooms />
 		</DefaultLayout>
-	);
+	)
 };
 
-export const Route = createFileRoute("/rooms/$country")({
+export const Route = createFileRoute("/rooms/$countryId")({
 	component: RouteComponent,
 });

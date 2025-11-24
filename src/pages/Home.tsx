@@ -2,7 +2,6 @@ import type { FunctionComponent } from "../common/types";
 import { Button, TextInput } from "@mantine/core";
 import { LuStar, LuMapPin, LuUsers } from "react-icons/lu";
 import { CountryCard } from "../components/cards/CountryCard";
-import type { Country } from "../types/country";
 import { useGetCountryQuery } from "../api/hooks/country";
 
 export const Home = (): FunctionComponent => {
@@ -16,54 +15,54 @@ export const Home = (): FunctionComponent => {
 	// 	}
 	// };
 
-	const countries: Array<Country> = [
-		{
-			id: "japan",
-			name: "Japan",
-			image: "",
-			description: "Discover traditional ryokans and modern apartments",
-			roomCount: 1247,
-		},
-		{
-			id: "italy",
-			name: "Italy",
-			image: "",
-			description: "Stay in historic villas and cozy apartments",
-			roomCount: 892,
-		},
-		{
-			id: "thailand",
-			name: "Thailand",
-			image: "",
-			description: "Tropical escapes and cultural experiences",
-			roomCount: 1156,
-		},
-		{
-			id: "france",
-			name: "France",
-			image: "",
-			description: "Elegant châteaux and Parisian apartments",
-			roomCount: 743,
-		},
-		{
-			id: "morocco",
-			name: "Morocco",
-			image: "",
-			description: "Authentic riads and desert retreats",
-			roomCount: 567,
-		},
-		{
-			id: "greece",
-			name: "Greece",
-			image: "",
-			description: "Island villas and ancient city stays",
-			roomCount: 634,
-		},
-	];
+	// const countries: Array<Country> = [
+	// 	{
+	// 		id: "japan",
+	// 		name: "Japan",
+	// 		image: "",
+	// 		description: "Discover traditional ryokans and modern apartments",
+	// 		roomCount: 1247,
+	// 	},
+	// 	{
+	// 		id: "italy",
+	// 		name: "Italy",
+	// 		image: "",
+	// 		description: "Stay in historic villas and cozy apartments",
+	// 		roomCount: 892,
+	// 	},
+	// 	{
+	// 		id: "thailand",
+	// 		name: "Thailand",
+	// 		image: "",
+	// 		description: "Tropical escapes and cultural experiences",
+	// 		roomCount: 1156,
+	// 	},
+	// 	{
+	// 		id: "france",
+	// 		name: "France",
+	// 		image: "",
+	// 		description: "Elegant châteaux and Parisian apartments",
+	// 		roomCount: 743,
+	// 	},
+	// 	{
+	// 		id: "morocco",
+	// 		name: "Morocco",
+	// 		image: "",
+	// 		description: "Authentic riads and desert retreats",
+	// 		roomCount: 567,
+	// 	},
+	// 	{
+	// 		id: "greece",
+	// 		name: "Greece",
+	// 		image: "",
+	// 		description: "Island villas and ancient city stays",
+	// 		roomCount: 634,
+	// 	},
+	// ];
 
-	const { data } = useGetCountryQuery();
+	const { data: countries } = useGetCountryQuery();
 
-	console.log(data?.data);
+	console.log(countries);
 
 	return (
 		<>
@@ -129,15 +128,20 @@ export const Home = (): FunctionComponent => {
 							<h2 className="mb-4 text-4xl font-bold md:text-5xl">
 								Explore Destinations
 							</h2>
-							<p className="mx-auto max-w-2xl text-xl text-balance">
+							<p className="text-muted mx-auto max-w-2xl text-xl text-balance">
 								Choose from our carefully selected countries and discover unique
 								accommodations
 							</p>
 						</div>
 
 						<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-							{countries.map((country, index) => (
-								<CountryCard key={index} country={country} to="/" />
+							{countries?.data.map((country, index) => (
+								<CountryCard
+									key={index}
+									country={country}
+									params={{ countryId: country.id.toString() }}
+									to="/rooms/$countryId"
+								/>
 							))}
 						</div>
 					</div>

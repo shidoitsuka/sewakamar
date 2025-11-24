@@ -6,7 +6,7 @@ import { TextInput } from "../components/forms/TextInput";
 import { useNavigate } from "@tanstack/react-router";
 import z from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { postUserLogin } from "../api/user";
+import { postUserLogin } from "../api/userApi";
 import { useAuthStore } from "../store/authStore";
 import { toast } from "sonner";
 

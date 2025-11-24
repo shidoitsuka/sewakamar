@@ -1,7 +1,6 @@
 export interface Country {
-  id: string;
-  name: string;
-	image: string;
-	roomCount: number;
+	id: string;
+	name: string;
+	path: string;
 	description: string;
 }

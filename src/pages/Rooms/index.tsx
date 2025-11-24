@@ -1,8 +1,11 @@
+import { useParams } from "@tanstack/react-router";
+import { useGetPropertyQuery } from "../../api/hooks/property";
 import { RoomCard } from "../../components/cards/RoomCard";
 import type { Room } from "../../types/room";
 import { RoomFilter } from "./components/Filter";
 
 export const Rooms: React.FC = () => {
+	const { countryId } = useParams({ strict: false });
 	const mockData: Array<Room> = [
 		{
 			id: "jp-1",
@@ -53,6 +56,10 @@ export const Rooms: React.FC = () => {
 			},
 		},
 	];
+
+	const { data } = useGetPropertyQuery({ country: countryId });
+
+	console.log(data);
 
 	return (
 		<>
